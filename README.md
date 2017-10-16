@@ -5,7 +5,7 @@ This REST webservice handles GET/POST request to creat a project or request for 
 It has the following apis 
   - createProject api which sends the request JSON payload to create a specific project, which then saves the project details
     in a file.
-  - requestProject api which requests for a specific porject with some specific parameters, the service then loads the project           
+  - requestProject api which requests for a specific project with some specific parameters, the service then loads the project           
     details from the files if its there and do the rules validations to return the specific project.
     
 The service has many rules and mapping algorithm to handle the request properly and provide proper error handling
