@@ -37,6 +37,16 @@ The project is created using below tools,technologies and dependency jars
     http://localhost:8080/ProjectManager/restapi/createProject
     For requestProject rest api
     http://localhost:8080/ProjectManager/restapi/requestProject
+    Some of the other valid GET request urls are as below
+    http://localhost:8080/ProjectManager/restapi/requestProject?projectid=1
+    http://localhost:8080/ProjectManager/restapi/requestProject?projectid=1&country=USA
+    http://localhost:8080/ProjectManager/restapi/requestProject?country=USA
+    http://localhost:8080/ProjectManager/restapi/requestProject?keyword=SPORTS
+    http://localhost:8080/ProjectManager/restapi/requestProject?number=27
+    http://localhost:8080/ProjectManager/restapi/requestProject?number=27&keyword=SPORTS
+    http://localhost:8080/ProjectManager/restapi/requestProject?country=USA&number=27&keyword=SPORTS
+    http://localhost:8080/ProjectManager/restapi/requestProject?country=USA&number=27
+    http://localhost:8080/ProjectManager/restapi/requestProject?projectid=1&country=USA&number=27&keyword=SPORTS
     
  *Note - The file "Projects.txt" has been added to my local project src class path. Kindly change this file path according to your project src class path in the ProjectService class wherever it is being used to avoid any run time exception.
  
