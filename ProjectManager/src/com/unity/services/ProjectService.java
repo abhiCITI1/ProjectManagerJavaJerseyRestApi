@@ -155,13 +155,14 @@ public class ProjectService {
 	{
 
 		logger.info("requestProject service invoked..");
-		//first check whether the request query params are valid or not to fetch the project
-		if(id!=0 && uriInfo!=null)
+		// check whether the request query id is valid or not to fetch the project
+		if(id<=0 && uriInfo!=null)
 		{
 			Response invalidIdRes = checkInvalidIdRequest(uriInfo);
 			if(invalidIdRes!=null)
 				return invalidIdRes;
 		}
+		// check whether the request query params are valid or not to fetch the project
 		if(uriInfo!=null)
 		{
 			Response validParamResponse = checkValidGetRequestParams(uriInfo);
