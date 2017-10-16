@@ -1,7 +1,7 @@
 # ProjectManagerJavaJerseyRestApi
 
 This is a REST webservice running on port 8080.
-This REST webservice handles GET/POST request to creat a project or request for a project
+This REST webservice handles GET/POST request to creat a project or request for a project.
 It has the following apis 
   - createProject api which sends the request JSON payload to create a specific project, which then saves the project details
     in a file.
