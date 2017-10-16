@@ -103,12 +103,12 @@ public class TestProjectService {
 	
 	
 	/**
-	 * test to create project with invalid date test
+	 * test to create project with null date test
 	 */
 	@Test
 	public void createProjectWithNullDateTest()
 	{
-		Project project = getProjectObj(1, "test project number 1", "XXX", "06202018 00:00:00", true, "http://www.unity3d.com", 7.6, countries, keyArr);
+		Project project = getProjectObj(1, "test project number 1", null, "06202018 00:00:00", true, "http://www.unity3d.com", 7.6, countries, keyArr);
 		given()
 		.contentType("application/json")
 		.body(project)
@@ -119,12 +119,12 @@ public class TestProjectService {
 	
 	
 	/**
-	 * test to create project with null date test
+	 * test to create project with invalid date test
 	 */
 	@Test
 	public void createProjectWithInvalidDateTest()
 	{
-		Project project = getProjectObj(1, "test project number 1", null, "06202018 00:00:00", true, "http://www.unity3d.com", 7.6, countries, keyArr);
+		Project project = getProjectObj(1, "test project number 1", "XXX", "06202018 00:00:00", true, "http://www.unity3d.com", 7.6, countries, keyArr);
 		given()
 		.contentType("application/json")
 		.body(project)

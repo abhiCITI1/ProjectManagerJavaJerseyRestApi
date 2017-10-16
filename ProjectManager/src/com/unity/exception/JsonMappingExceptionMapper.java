@@ -22,7 +22,7 @@ public class JsonMappingExceptionMapper implements ExceptionMapper<JsonMappingEx
 		// TODO Auto-generated method stub
 		return Response
                 .status(Response.Status.BAD_REQUEST)
-                .entity("This is an invalid request. At least one field format is not readable by the system. " + exception.getMessage())
+                .entity("This is an invalid request. At least one field format or field rule is not validated by the system. " + exception.getMessage())
                 .type( MediaType.TEXT_PLAIN)
                 .build();
 	}

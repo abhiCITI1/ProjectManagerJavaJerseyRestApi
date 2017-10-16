@@ -158,9 +158,12 @@ public class ProjectService {
 		// check whether the request query id is valid or not to fetch the project
 		if(id<=0 && uriInfo!=null)
 		{
-			Response invalidIdRes = checkInvalidIdRequest(uriInfo);
-			if(invalidIdRes!=null)
-				return invalidIdRes;
+			if(uriInfo.getQueryParameters().get("projectid")!=null)
+			{
+				logger.info("chceking for invalid id in get request..");
+				if(uriInfo.getQueryParameters().get("projectid").size()!=0)
+					return Response.status(400).entity("Invalid GET request by id").build();
+			}
 		}
 		// check whether the request query params are valid or not to fetch the project
 		if(uriInfo!=null)
@@ -431,13 +434,6 @@ public class ProjectService {
 	}
 	
 	/**
-	 * @param obj
-	 * @param targetCountry
-	 * @param num
-	 * @return boolean value based on country and num both present
-	 */
-	
-	/**
 	 * @param jsonObjList
 	 * @param targetCountry
 	 * @param number
@@ -620,7 +616,13 @@ public class ProjectService {
 		
 	}
 	
-	//this method loads all the projects list json objects from the txt file 
+	/**
+	 * @param filename
+	 * @return
+	 * @throws IOException
+	 * @throws ParseException
+	 * this method loads all the projects list json objects from the txt file
+	 */
 	public List<JSONObject> loadProjectFromFile(String filename) throws IOException, ParseException
 	{
 		logger.info("loading project list from the txt file...");
@@ -697,6 +699,12 @@ public class ProjectService {
 		
 	}
 	
+	/**
+	 * @param creationDate
+	 * @param expiryDate
+	 * @return boolean
+	 * @throws JsonMappingException
+	 */
 	public boolean checkCreationExpiryDateOrder(String creationDate, String expiryDate) throws JsonMappingException
 	{
 		SimpleDateFormat sdf = new SimpleDateFormat("MMddyyyy HH:mm:ss");
@@ -721,6 +729,11 @@ public class ProjectService {
 		return improperDateOrder;
 	}
 	
+	/**
+	 * @param date
+	 * @return boolean for valid date check
+	 * @throws JsonMappingException
+	 */
 	public boolean checkValidDateFormat(String date) throws JsonMappingException
 	{
 		SimpleDateFormat sdf = new SimpleDateFormat("MMddyyyy HH:mm:ss");
@@ -737,6 +750,10 @@ public class ProjectService {
 			
 	}
 	
+	/**
+	 * @param uriInfo
+	 * @return Response json object
+	 */
 	public Response checkValidGetRequestParams(UriInfo uriInfo)
 	{
 		logger.info("checking for the params..");
@@ -756,17 +773,8 @@ public class ProjectService {
 		}
 		
 		if(invalidParamPresent)
-			return Response.status(400).entity("Invalid GET request with new params..").build();
+			return Response.status(400).entity("Invalid GET request with unwanted parameters").build();
 		
-		return null;
-		
-	}
-	
-	public Response checkInvalidIdRequest(UriInfo uriInfo)
-	{
-		logger.info("chceking for invalid id in get request..");
-		if(Integer.valueOf(uriInfo.getQueryParameters().get("projectid").get(0))<=0)
-			return Response.status(400).entity("Invalid GET request by id").build();
 		return null;
 		
 	}
