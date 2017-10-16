@@ -1,0 +1,7 @@
+com/unity/exception/UnrecognizedPropertyExceptionMapper.class
+com/unity/exception/JsonMappingExceptionMapper.class
+com/unity/model/Key.class
+com/unity/exception/JsonParseExceptionMapper.class
+com/unity/test/TestProjectService.class
+com/unity/services/ProjectService.class
+com/unity/model/Project.class
